@@ -2,6 +2,7 @@ package com.example.CadastroCliente.service;
 
 import com.example.CadastroCliente.entitites.Cliente;
 import com.example.CadastroCliente.repositories.ClienteRepository;
+import com.example.CadastroCliente.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ClienteService {
 
     public Cliente findById(Long id) {
         Optional<Cliente> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Cliente insert(Cliente obj) {
