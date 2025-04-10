@@ -2,8 +2,11 @@ package com.example.CadastroCliente.service;
 
 import com.example.CadastroCliente.entitites.Cliente;
 import com.example.CadastroCliente.repositories.ClienteRepository;
+import com.example.CadastroCliente.service.exceptions.DatabaseException;
 import com.example.CadastroCliente.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +31,15 @@ public class ClienteService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        }
+        catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Cliente update(Long id, Cliente obj) {
