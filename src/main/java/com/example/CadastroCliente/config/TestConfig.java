@@ -1,7 +1,7 @@
 package com.example.CadastroCliente.config;
 
 import com.example.CadastroCliente.entitites.Cliente;
-import com.example.CadastroCliente.enums.Status;
+import com.example.CadastroCliente.entitites.enums.Status;
 import com.example.CadastroCliente.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

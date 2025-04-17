@@ -1,4 +1,4 @@
-package com.example.CadastroCliente.enums;
+package com.example.CadastroCliente.entitites.enums;
 
 public enum Status {
     INATIVO(0),

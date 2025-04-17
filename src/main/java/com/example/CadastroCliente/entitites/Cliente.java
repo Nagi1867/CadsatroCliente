@@ -1,6 +1,6 @@
 package com.example.CadastroCliente.entitites;
 
-import com.example.CadastroCliente.enums.Status;
+import com.example.CadastroCliente.entitites.enums.Status;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
